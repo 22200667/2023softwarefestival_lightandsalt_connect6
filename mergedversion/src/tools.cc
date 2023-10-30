@@ -42,8 +42,9 @@ void ban_field(char board[][GRID_NUM], move_t* move, char color,int a){
     }
     if(a==2){
     board[move->positions[0].x][move->positions[0].y] = color;
-    board[move->positions[1].x][move->positions[1].y] = color;    
-     }
+    board[move->positions[1].x][move->positions[1].y] = color;
+    }
+
 }
 void unmake_move(char board[][GRID_NUM], move_t* move)
 {
@@ -294,6 +295,7 @@ int move2msg(move_t* move, char* msg)
     }
     return 2;
 }
+
 int msg2move(char* msg, move_t* move)
 {
     if (msg[2] == 0)
@@ -309,15 +311,10 @@ int msg2move(char* msg, move_t* move)
         move->positions[0].y = msg[0] - 'A' + 1;
         move->positions[1].x = 'S' - msg[3] + 1;
         move->positions[1].y = msg[2] - 'A' + 1;
-
-        //move->positions[0].x = msg[0] - 'A' + 1;
-        //move->positions[0].y = msg[1] - 'A' + 1;
-        //move->positions[1].x = msg[2] - 'A' + 1;
-        //move->positions[1].y = msg[3] - 'A' + 1;
+        
         move->score = 0;
         return 2;
     }
-    
 }
 
 void print_board(char board[21][21], move_t* preMove)

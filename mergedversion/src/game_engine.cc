@@ -133,7 +133,7 @@ int CGameEngine::run()
                 //new black
                 msg2move("JJ", &m_best_move);
                 make_move(m_board, &m_best_move, BLACK);
-                m_chess_type = BLACK;
+                m_chess_type = BLACK;   
                 printf("move JJ\n");
                 fflush(stdout);
                 continue;
@@ -179,21 +179,40 @@ int CGameEngine::run()
             printf("Set the search depth to %d.\n\n", m_alphabeta_depth);
             fflush(stdout);
         } else
-        if (strncmp(msg, "help", 4) == 0) {
+        if (strncmp(msg, "help", 4) == 0) { 
             on_help();
-        }else if(strncmp(msg,"place",5)==0){
+        } else if(strncmp(msg,"placeB",6)==0){
                 init_game();
-                if(&msg[6]!=NULL){
-                msg2move(&msg[6], &m_best_move);
-                make_move(m_board, &m_best_move, BORDER);   
-                printf("place set\n");
-                fflush(stdout);
-                }
                 msg2move("JJ", &m_best_move);
                 make_move(m_board, &m_best_move, BLACK);
                 m_chess_type = BLACK;   
                 printf("move JJ\n");
                 fflush(stdout);
+                if(msg[7]!=0){
+                int a=msg2move(&msg[7], &m_best_move);
+                ban_field(m_board, &m_best_move, BORDER,a);
+                if(msg[11]!=0){
+                a=msg2move(&msg[11], &m_best_move);
+                ban_field(m_board, &m_best_move, BORDER,a);
+                printf("check1");
+                }
+                printf("place set\n");
+                fflush(stdout);
+                }
+                continue;
+        }else if(strncmp(msg,"placeW",6)==0){
+                init_game();
+                m_chess_type = WHITE;
+                if(msg[7]!=0){
+                int a=msg2move(&msg[7], &m_best_move);
+                ban_field(m_board, &m_best_move, BORDER,a);
+                if(msg[11]!=0){
+                a=msg2move(&msg[11], &m_best_move);
+                ban_field(m_board, &m_best_move, BORDER,a);
+                }
+                printf("place set\n");
+                fflush(stdout);
+                }
                 continue;
         }
     }
@@ -240,3 +259,5 @@ bool CGameEngine::search_a_move(char ourColor,move_t* bestMove)
 
     return true;
 }
+
+
