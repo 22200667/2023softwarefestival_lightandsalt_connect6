@@ -42,7 +42,9 @@ double CSearchEngine::alpha_beta_search(int depth,double alpha,double beta,char 
 {
     move_t moveList[NUMOFONE * NUMOFTWO * 2];
     move_t tempBest;
-
+    clock_t start;
+    double time_limit=25.0;
+    start=clock();
     double val = 0;
     int n = 0;
     int beg, end;
@@ -125,6 +127,8 @@ double CSearchEngine::alpha_beta_search(int depth,double alpha,double beta,char 
             bestMove->positions[1].y = moveList[i].positions[1].y;
             bestMove->score = alpha;
         }
+        if(1.0 * (clock() - start) / (CLOCKS_PER_SEC) >time_limit)
+            return alpha;
     }
 
     return alpha;
