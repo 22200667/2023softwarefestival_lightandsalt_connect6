@@ -1,0 +1,168 @@
+[Mon Oct 30 00:26:18 2023] - place AABBCCDD
+[Mon Oct 30 00:26:25 2023] - print
+[Mon Oct 30 00:26:43 2023] - print
+[Mon Oct 30 00:28:00 2023] - placeB AABBCCDD
+[Mon Oct 30 00:28:04 2023] - print
+[Mon Oct 30 00:32:19 2023] - place AABBCCDD
+[Mon Oct 30 00:32:21 2023] - print
+[Mon Oct 30 00:32:45 2023] - placeB AABBCCDD
+[Mon Oct 30 00:32:47 2023] - print
+[Mon Oct 30 00:35:14 2023] - placeB AABBCCDD
+[Mon Oct 30 00:35:22 2023] - print
+[Mon Oct 30 00:36:45 2023] - move IJJK
+[Mon Oct 30 00:37:02 2023] - print
+[Mon Oct 30 00:37:56 2023] - placeB AABB
+[Mon Oct 30 00:37:57 2023] - print
+[Mon Oct 30 00:39:47 2023] - placeB AA
+[Mon Oct 30 00:39:49 2023] - print
+[Mon Oct 30 00:39:57 2023] - placeB AABBCC
+[Mon Oct 30 00:39:59 2023] - print
+[Mon Oct 30 00:40:09 2023] - printW AABBCCDD
+[Mon Oct 30 00:40:22 2023] - print
+[Mon Oct 30 00:40:48 2023] - placeW AABBCCDD
+[Mon Oct 30 00:40:49 2023] - print
+[Mon Oct 30 00:40:59 2023] - place AABBCC
+[Mon Oct 30 00:41:06 2023] - placeW AABBCC
+[Mon Oct 30 00:41:07 2023] - placeW AABBCC
+[Mon Oct 30 00:41:11 2023] - print
+[Mon Oct 30 00:41:23 2023] - move JJ
+[Mon Oct 30 00:41:31 2023] - placeW AABB
+[Mon Oct 30 00:41:35 2023] - print
+[Mon Oct 30 00:41:40 2023] - placeW AA
+[Mon Oct 30 00:41:41 2023] - print
+[Mon Oct 30 00:42:04 2023] - placeW
+[Mon Oct 30 00:42:06 2023] - print
+[Mon Oct 30 00:42:10 2023] - move JJ
+[Mon Oct 30 00:42:14 2023] - placeB
+[Mon Oct 30 00:42:15 2023] - print
+[Mon Oct 30 00:45:46 2023] - print
+[Mon Oct 30 00:46:11 2023] - placeB JKLI
+[Mon Oct 30 00:46:13 2023] - print
+[Mon Oct 30 00:46:58 2023] - move 
+[Mon Oct 30 00:47:12 2023] - placeB JKLI
+[Mon Oct 30 00:47:14 2023] - print
+[Mon Oct 30 00:47:55 2023] - move HLIM
+[Mon Oct 30 00:48:24 2023] - print
+[Mon Oct 30 00:49:39 2023] - move GLFL
+[Mon Oct 30 00:50:02 2023] - print
+[Mon Oct 30 00:51:32 2023] - move ILIO
+[Mon Oct 30 00:51:48 2023] - print
+[Mon Oct 30 00:53:01 2023] - move GMHN
+[Mon Oct 30 00:53:09 2023] - print
+[Mon Oct 30 00:54:37 2023] - move INGI
+[Mon Oct 30 00:54:49 2023] - print
+[Mon Oct 30 00:56:04 2023] - move KGHM
+[Mon Oct 30 00:56:10 2023] - print
+[Mon Oct 30 00:57:25 2023] - move MMGS
+[Mon Oct 30 00:57:27 2023] - print
+[Mon Oct 30 01:02:35 2023] - quit
+[Mon Oct 30 01:02:57 2023] - placeB KJJKJIIJ
+[Mon Oct 30 01:03:00 2023] - print
+[Mon Oct 30 01:04:06 2023] - move GEHE
+[Mon Oct 30 01:04:45 2023] - print
+[Mon Oct 30 01:05:14 2023] - move IEHD
+[Mon Oct 30 01:05:26 2023] - print
+[Mon Oct 30 01:05:48 2023] - move NFIK
+[Mon Oct 30 01:05:49 2023] - print
+[Tue Oct 31 21:32:07 2023] - placeB 
+[Tue Oct 31 21:32:09 2023] - print
+[Tue Oct 31 21:32:22 2023] - move IJJK
+[Tue Oct 31 21:35:15 2023] - placeB 
+[Tue Oct 31 21:35:17 2023] - print
+[Tue Oct 31 21:35:24 2023] - move IJJK
+[Tue Oct 31 21:35:34 2023] - print
+[Tue Oct 31 21:39:36 2023] - placeB
+[Tue Oct 31 21:39:37 2023] - print
+[Tue Oct 31 21:39:46 2023] - move IJJK
+[Tue Oct 31 21:39:55 2023] - print
+[Tue Oct 31 21:41:01 2023] - move ILII
+[Tue Oct 31 21:41:10 2023] - print
+[Tue Oct 31 21:43:29 2023] - move GNFO
+[Tue Oct 31 21:43:39 2023] - print
+[Tue Oct 31 21:44:44 2023] - move JMKN
+[Tue Oct 31 21:44:53 2023] - print
+[Tue Oct 31 21:45:32 2023] - move HPNJ
+[Tue Oct 31 21:45:34 2023] - print
+[Tue Oct 31 21:46:28 2023] - move FNLH
+[Tue Oct 31 21:46:30 2023] - print
+[Tue Oct 31 21:47:00 2023] - move JPKE
+[Tue Oct 31 21:47:02 2023] - print
+[Tue Oct 31 21:51:21 2023] - print
+[Tue Oct 31 21:51:35 2023] - placeB IJIK
+[Tue Oct 31 21:51:38 2023] - print
+[Tue Oct 31 21:52:09 2023] - move JMKN
+[Tue Oct 31 21:52:19 2023] - print
+[Tue Oct 31 21:53:03 2023] - move KKKL
+[Tue Oct 31 21:53:14 2023] - print
+[Tue Oct 31 21:53:56 2023] - move KMJN
+[Tue Oct 31 21:54:04 2023] - print
+[Tue Oct 31 21:55:07 2023] - move IOLL
+[Tue Oct 31 21:55:12 2023] - print
+[Tue Oct 31 21:55:59 2023] - move JOJP
+[Tue Oct 31 21:56:03 2023] - print'
+[Tue Oct 31 21:56:05 2023] - print
+[Tue Oct 31 21:56:43 2023] - move KOLO
+[Tue Oct 31 21:56:46 2023] - print
+[Tue Oct 31 21:58:10 2023] - move LNMM
+[Tue Oct 31 21:58:13 2023] - print
+[Tue Oct 31 21:58:42 2023] - move LMML
+[Tue Oct 31 21:58:44 2023] - print
+[Tue Oct 31 21:59:16 2023] - move NMOM
+[Tue Oct 31 22:00:09 2023] - placeB IJIK
+[Tue Oct 31 22:00:10 2023] - print
+[Tue Oct 31 22:01:21 2023] - move JMKN
+[Tue Oct 31 22:01:41 2023] - print
+[Tue Oct 31 22:03:30 2023] - move KOKL
+[Tue Oct 31 22:05:38 2023] - print 
+[Tue Oct 31 22:05:42 2023] - print
+[Tue Oct 31 22:07:40 2023] - depth 4
+[Tue Oct 31 22:08:05 2023] - placeB IJIK
+[Tue Oct 31 22:08:07 2023] - print
+[Tue Oct 31 22:08:26 2023] - move JMKN
+[Tue Oct 31 22:08:34 2023] - print
+[Tue Oct 31 22:10:15 2023] - move ILFI
+[Tue Oct 31 22:10:17 2023] - print
+[Tue Oct 31 22:11:25 2023] - move HKJG
+[Tue Oct 31 22:11:30 2023] - print
+[Tue Oct 31 22:13:28 2023] - move KG GG
+[Tue Oct 31 22:13:32 2023] - print
+[Tue Oct 31 22:14:02 2023] - placeB IJJK
+[Tue Oct 31 22:14:15 2023] - move JMKN
+[Tue Oct 31 22:14:28 2023] - depth 4
+[Tue Oct 31 22:14:34 2023] - placeB IJJK
+[Tue Oct 31 22:14:50 2023] - move JMKN
+[Tue Oct 31 22:14:54 2023] - print
+[Tue Oct 31 22:15:09 2023] - depth 4
+[Tue Oct 31 22:15:24 2023] - placeB IJIK
+[Tue Oct 31 22:15:34 2023] - move JMKN
+[Tue Oct 31 22:15:36 2023] - print
+[Tue Oct 31 22:16:07 2023] - move ILFI
+[Tue Oct 31 22:16:42 2023] - move HKJG
+[Tue Oct 31 22:16:44 2023] - print
+[Tue Oct 31 22:17:20 2023] - move KGGG
+[Tue Oct 31 22:17:25 2023] - print
+[Tue Oct 31 22:18:18 2023] - move LHFH
+[Tue Oct 31 22:18:20 2023] - print
+[Tue Oct 31 22:18:49 2023] - move MIGI
+[Tue Oct 31 22:18:50 2023] - print
+[Tue Oct 31 22:19:24 2023] - move IGNL
+[Tue Oct 31 22:19:25 2023] - print
+[Tue Oct 31 22:23:02 2023] - move MLGF
+[Tue Oct 31 22:23:03 2023] - print
+[Tue Oct 31 22:24:50 2023] - move LLNJ
+[Tue Oct 31 22:24:51 2023] - print
+[Tue Oct 31 22:26:36 2023] - depth 5
+[Tue Oct 31 22:26:55 2023] - placeB IJIK
+[Tue Oct 31 22:26:57 2023] - print
+[Tue Oct 31 22:27:22 2023] - move JMKN
+[Tue Oct 31 22:31:11 2023] - placeB IJIK
+[Tue Oct 31 22:31:14 2023] - print
+[Tue Oct 31 22:31:22 2023] - move JMKN
+[Tue Oct 31 22:31:56 2023] - print
+[Tue Oct 31 22:36:54 2023] - placeB IJIK
+[Tue Oct 31 22:36:55 2023] - print
+[Tue Oct 31 22:37:02 2023] - move JMKN
+[Tue Oct 31 22:38:56 2023] - placeB IJIK
+[Tue Oct 31 22:38:57 2023] - print
+[Tue Oct 31 22:39:01 2023] - move JMKN
+[Tue Oct 31 22:39:38 2023] - print
