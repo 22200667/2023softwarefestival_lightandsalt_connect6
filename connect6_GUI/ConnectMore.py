@@ -22,7 +22,6 @@ import os;
 import random;
 if os.name == 'nt':
     from subprocess import STARTUPINFO;
-
 class Move:
     NONE = 0;
     BLACK = 1;
@@ -186,7 +185,10 @@ class GameEngine:
 
     def next(self, moveList = []):
         if self.proc != None:
-            cmd = 'new xxx\n';
+            if App.mycolor=='b':
+                cmd = 'placeB '+App.redList+'\n';
+            else:
+                cmd = 'placeW '+App.redList+'\n';
             self.sendCmd(cmd);
             for m in moveList:
                 cmd = m.toPlaceCmd();
@@ -203,6 +205,7 @@ class GameEngine:
                     # Add ret in the end;
                     cmd += '\n';
                 self.proc.stdin.write(cmd.encode());
+                print(cmd);
             except Exception as e:
                 print('Error for sendCmd:', cmd, str(e));
 
@@ -233,7 +236,8 @@ class GameState:
 
 class App(Frame):
     
-        
+    redList='';
+    mycolor='';
     def __init__(self, master=None):
         Frame.__init__(self, master, width=640, height=700)
         self.pack();
@@ -393,7 +397,7 @@ class App(Frame):
             except Exception as e:
                 messagebox.showinfo("Error","Error to load the engine: " + fileName + ",\n errors: " + str(e));
 
-    def initGameEngine(self, mycolor, fileName=''):
+    def initGameEngine(self, fileName=''):
         self.gameEngine.init(fileName, self.aiLevel.get(), self.isVcf());
         # Change the engine name
         shortName = self.gameEngine.shortName.capitalize();
@@ -403,11 +407,6 @@ class App(Frame):
         name = self.gameEngine.name.capitalize();
         self.controlFrame.aiStatus.name['text'] = name;
         #root.title('Cloudict.Connect6 - ' + name);
-        if mycolor == 'w':
-            self.sendCmd('placeW '+self.redList);
-        else:
-            self.sendCmd('placeB '+self.redList);
-
 
     def createBoardUnit(self, x, y, imageKey):
         lb = Label(self.canvas, height=32, width=32);
@@ -547,7 +546,7 @@ class App(Frame):
                         self.gameEngine.color = move.color;
                         self.makeMove(move);
                         if self.gameState == GameState.WaitForEngine and self.gameMode == GameState.AI2Human:
-                            self.toGameState(GameState.WtForHumanFirst);
+                            self.toGameState(GameState.WaitForHumanFirst);
                     else:
                         sleep(0.1);
                 else:
@@ -610,17 +609,16 @@ class App(Frame):
             self.toGameMode(GameState.AI2AI);
             self.initGameEngine();
             self.toGameState(GameState.WaitForEngine);
-            self.sendCmd('placeB '+self.redList);
+            # self.gameEngine.sendCmd('placeB '+App.redList);
         else:
-            # self.initGameEngine();
-            # self.toGameMode(GameState.AI2Human);
-            if black != '':
-                self.initGameEngine('b');
-                # self.sendCmd('placeB '+self.redList);
-            else:
-                self.initGameEngine('w');
-                # self.sendCmd('placeW '+self.redList);
+            self.initGameEngine();
             self.toGameMode(GameState.AI2Human);
+            if black != '':
+                App.mycolor='b';
+                # self.gameEngine.sendCmd('placeB '+App.redList);
+            else:
+                App.mycolor='w';
+                # self.gameEngine.sendCmd('placeW '+App.redList);
             if black != '':
                 self.toGameState(GameState.WaitForEngine);
             else:
@@ -628,7 +626,7 @@ class App(Frame):
     
     def setBan(self):#when setting bans, come here
         self.setting_ban = TRUE;
-        self.redList = '';
+        App.redList = '';
         self.gameEngine.release();
         self.initBoard();
         black = self.blackSelected.get().strip();
@@ -710,7 +708,7 @@ class App(Frame):
 
             self.placeColor(Move.BAN, x, y);
             base = ord('A');            
-            self.redList += (chr(base + x) + chr(base + y));
+            App.redList += (chr(base + x) + chr(base + y));
             return;
 
         ###################
