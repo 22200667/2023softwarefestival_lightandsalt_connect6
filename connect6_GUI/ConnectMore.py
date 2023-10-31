@@ -393,7 +393,7 @@ class App(Frame):
             except Exception as e:
                 messagebox.showinfo("Error","Error to load the engine: " + fileName + ",\n errors: " + str(e));
 
-    def initGameEngine(self, fileName=''):
+    def initGameEngine(self, mycolor, fileName=''):
         self.gameEngine.init(fileName, self.aiLevel.get(), self.isVcf());
         # Change the engine name
         shortName = self.gameEngine.shortName.capitalize();
@@ -403,6 +403,11 @@ class App(Frame):
         name = self.gameEngine.name.capitalize();
         self.controlFrame.aiStatus.name['text'] = name;
         #root.title('Cloudict.Connect6 - ' + name);
+        if mycolor == 'w':
+            self.sendCmd('placeW '+self.redList);
+        else:
+            self.sendCmd('placeB '+self.redList);
+
 
     def createBoardUnit(self, x, y, imageKey):
         lb = Label(self.canvas, height=32, width=32);
@@ -607,12 +612,15 @@ class App(Frame):
             self.toGameState(GameState.WaitForEngine);
             self.sendCmd('placeB '+self.redList);
         else:
-            self.initGameEngine();
-            self.toGameMode(GameState.AI2Human);
+            # self.initGameEngine();
+            # self.toGameMode(GameState.AI2Human);
             if black != '':
-                self.sendCmd('placeB '+self.redList);
+                self.initGameEngine('b');
+                # self.sendCmd('placeB '+self.redList);
             else:
-                self.sendCmd('placeW '+self.redList);
+                self.initGameEngine('w');
+                # self.sendCmd('placeW '+self.redList);
+            self.toGameMode(GameState.AI2Human);
             if black != '':
                 self.toGameState(GameState.WaitForEngine);
             else:
