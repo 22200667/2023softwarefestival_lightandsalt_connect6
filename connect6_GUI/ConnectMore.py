@@ -273,7 +273,7 @@ class App(Frame):
         im['go_w'] = PhotoImage(file='imgs/go_w.gif');
         im['go_bt'] = PhotoImage(file='imgs/go_bt.gif');
         im['go_wt'] = PhotoImage(file='imgs/go_wt.gif');
-        im['go_bant'] = PhotoImage(file='imgs/go_bant.gif');
+        im['go_ban'] = PhotoImage(file='imgs/go_ban.gif');
 
         im['angel'] = PhotoImage(file='imgs/Emotes-face-angel.gif');
         im['laugh'] = PhotoImage(file='imgs/Emotes-face-laugh.gif');
@@ -354,11 +354,12 @@ class App(Frame):
         
         self.controlFrame.gameContral = labelframe = LabelFrame(self.controlFrame, text='Game Contral');
         labelframe.pack(fill=X, expand=1);
-        labelframe.newBtn = Button(labelframe, text='Start Game', command=self.newGame);
+        labelframe.newBtn = Button(labelframe, text='Set Red Stone', command=self.setBan);
         labelframe.newBtn.pack(side=TOP, fill=X);
         labelframe.backBtn = Button(labelframe, text='Back Move', command=self.backMove);
         labelframe.backBtn.pack(fill=X);
-        labelframe.loadBtn = Button(labelframe, text='Load Engine', command=self.loadGameEngine);
+        #labelframe.loadBtn = Button(labelframe, text='Load Engine', command=self.loadGameEngine); #depr
+        labelframe.loadBtn = Button(labelframe, text='Start the Game', command=self.newGame);
         labelframe.loadBtn.pack(fill=BOTH);
         labelframe.quitBtn = Button(labelframe, text='Quit Game', command=self.master.destroy);
         labelframe.quitBtn.pack(fill=X);
@@ -541,7 +542,7 @@ class App(Frame):
                         self.gameEngine.color = move.color;
                         self.makeMove(move);
                         if self.gameState == GameState.WaitForEngine and self.gameMode == GameState.AI2Human:
-                            self.toGameState(GameState.WaitForHumanFirst);
+                            self.toGameState(GameState.WtForHumanFirst);
                     else:
                         sleep(0.1);
                 else:
@@ -589,29 +590,42 @@ class App(Frame):
             return Move.BLACK;
         return Move.NONE;
 
-    def newGame(self):
-        self.gameEngine.release();
-        self.initBoard();
+    def newGame(self):#genuine game start
+        # self.gameEngine.release();
+        # self.initBoard();
+        self.setting_ban = FALSE;
         black = self.blackSelected.get().strip();
         white = self.whiteSelected.get().strip();
-        self.set_ban();
-        if black == '' and white == '':
+        
+        # self.setBan();
+        if black == '' and white == '': #red stone is not supported
             self.toGameMode(GameState.Human2Human);
             self.toGameState(GameState.WaitForHumanFirst);
         elif black != '' and white != '':
             self.toGameMode(GameState.AI2AI);
             self.initGameEngine();
             self.toGameState(GameState.WaitForEngine);
+            self.sendCmd('placeB '+self.redList);
         else:
             self.initGameEngine();
             self.toGameMode(GameState.AI2Human);
+            if black != '':
+                self.sendCmd('placeB '+self.redList);
+            else:
+                self.sendCmd('placeW '+self.redList);
             if black != '':
                 self.toGameState(GameState.WaitForEngine);
             else:
                 self.toGameState(GameState.WaitForHumanFirst);
     
-    def set_ban(self):
+    def setBan(self):#when setting bans, come here
         self.setting_ban = TRUE;
+        self.redList = '';
+        self.gameEngine.release();
+        self.initBoard();
+        black = self.blackSelected.get().strip();
+        white = self.whiteSelected.get().strip();
+        
 
     def addToMoveList(self, move):
         # Rerender pre move
@@ -661,7 +675,8 @@ class App(Frame):
             imageKey = 'go_ban';
         else:
             return ;
-        imageKey += extra;
+        if color != Move.BAN:
+            imageKey += extra;
         self.gameBoard[x][y].color = color;
         self.gameBoard[x][y]['image'] = self.images[imageKey];
         self.gameBoard[x][y].grid(row=x, column=y);
@@ -682,26 +697,14 @@ class App(Frame):
         if not self.isNoneStone(x, y):
             return ;
         if self.setting_ban == True:############
-            if len(self.moveList) == 0:
-                # First Move for Black
-                self.move = Move(Move.BAN, x, y, x, y);
-                self.placeStone(Move.BAN, x, y);
-                self.addToMoveList(self.move);
-                self.toGameState(GameState.WaitForHumanFirst);
-                
-            elif self.gameState == GameState.WaitForHumanFirst:
-                self.move = Move(Move.BAN, x, y);
-                self.placeStone(Move.BAN, x, y);
-                if self.gameState == GameState.WaitForHumanFirst:
-                    self.toGameState(GameState.WaitForHumanSecond);
-                
-            elif self.gameState == GameState.WaitForHumanSecond:
-                self.move.x2 = x;
-                self.move.y2 = y;
-                self.placeStone(Move.BAN, x, y);
-                self.addToMoveList(self.move);
-                if self.gameState == GameState.WaitForHumanSecond:
-                    self.toGameState(GameState.WaitForHumanFirst);
+            # self.move = Move(Move.BAN, x, y);
+            # self.placeStone(Move.BAN, x, y);
+
+            self.placeColor(Move.BAN, x, y);
+            base = ord('A');            
+            self.redList += (chr(base + x) + chr(base + y));
+            return;
+
         ###################
         if self.gameMode == GameState.Human2Human:
             color = self.nextColor();
