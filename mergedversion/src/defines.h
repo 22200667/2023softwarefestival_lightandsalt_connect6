@@ -28,7 +28,6 @@
 #define BLACK               1           // Black flag in the board.
 #define WHITE               2           // White flag in the board.
 #define BORDER              3           // Border flag in the board.
-#define BAN                 4           // ban
 #define NOSTONE             0           // Empty flag.
 
 #define MSG_LENGTH          512
