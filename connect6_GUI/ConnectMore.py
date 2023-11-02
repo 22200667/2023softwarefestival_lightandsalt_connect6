@@ -55,10 +55,6 @@ class Move:
         
         return None;
 
-    def toCmd(self):  
-        cmd = 'move ' + self.cmd() + '\n';
-        print('Cmd:', cmd);
-        return cmd;
 
     def toPlaceCmd(self):
         if self.color == Move.BLACK:
@@ -225,7 +221,7 @@ class GameState:
 
     Idle = 0;
     AI2AI = 1;
-    AI2Human = 2
+    AI2Human = 2;
     Human2Human = 3;
 
     WaitForEngine = 1;
