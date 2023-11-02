@@ -368,18 +368,18 @@ class App(Frame):
         labelframe.quitBtn = Button(labelframe, text='Quit Game', command=self.master.destroy);
         labelframe.quitBtn.pack(fill=X);
 
-        # self.controlFrame.aiStatus = labelframe = LabelFrame(self.controlFrame, text='AI Status');
-        # labelframe.pack(side=BOTTOM, fill=BOTH, expand="yes");
+        self.controlFrame.aiStatus = labelframe = LabelFrame(self.controlFrame, text='AI Status');
+        labelframe.pack(side=BOTTOM, fill=BOTH, expand="yes");
         # labelframe.name = Label(labelframe, text='AI Name');
         # labelframe.name.pack(side=TOP, anchor = W);
         # labelframe.image = Label(labelframe, image=self.images['smile']);
         # labelframe.image.pack(side=TOP, anchor = W);
-        # labelframe.info = Label(labelframe, text='');
-        # labelframe.info.pack(side=BOTTOM, anchor = W);
+        labelframe.info = Label(labelframe, text='');
+        labelframe.info.pack(side=LEFT, anchor = W);
 
         #self.initGameEngine();
 
-        # self.updateStatus();
+        self.updateStatus();
 
     def isVcf(self):
         vcf = True;
@@ -528,7 +528,7 @@ class App(Frame):
             # print('Msg:', msg);
             move = Move.fromCmd(msg, color);
             # print('Wait move:', move);
-            # self.updateStatus();
+            self.updateStatus();
             if move != None:
                 break;
             
@@ -555,36 +555,36 @@ class App(Frame):
                 print('Exception when searching: ' + str(e));
                 sleep(0.5);
 
-    # def updateStatus(self):#dep
-    #     image = random.sample(self.faces.get(GameState.Idle), 1)[0];
-    #     ls = self.faces.get(self.gameState);
-    #     # According to gameState.
-    #     if ls != None and len(ls) > 0:
-    #         image = random.sample(ls, 1)[0];
+    def updateStatus(self):#dep
+        # image = random.sample(self.faces.get(GameState.Idle), 1)[0];
+        # ls = self.faces.get(self.gameState);
+        # According to gameState.
+        # if ls != None and len(ls) > 0:
+        #     image = random.sample(ls, 1)[0];
             
-    #     self.controlFrame.aiStatus.image['image'] = image;
-    #     self.controlFrame.aiStatus.info['text'] = '';
+        # self.controlFrame.aiStatus.image['image'] = image;
+        self.controlFrame.aiStatus.info['text'] = '';
 
-    #     msg = 'Press start to game.';
-    #     if self.gameState == GameState.Win:
-    #         if self.winner == self.gameEngine.color:
-    #             msg = 'I win!';
-    #         else:
-    #             msg = 'I lose!';
-    #     elif self.gameState == GameState.WaitForHumanFirst:
-    #         msg = 'Move the first...';
-    #     elif self.gameState == GameState.WaitForHumanSecond:
-    #         msg = 'Move the second...';
-    #     elif self.gameState == GameState.WaitForEngine:
-    #         msg = 'Thinking.';
-    #         # Check format: Searching 31/37
+        msg = 'Press start to game.';
+        if self.gameState == GameState.Win:
+            if self.winner == self.gameEngine.color:
+                msg = 'I win!';
+            else:
+                msg = 'I lose!';
+        elif self.gameState == GameState.WaitForHumanFirst:
+            msg = 'Move the first...';
+        elif self.gameState == GameState.WaitForHumanSecond:
+            msg = 'Move the second...';
+        elif self.gameState == GameState.WaitForEngine:
+            msg = 'Thinking.';
+            # Check format: Searching 31/37
 
-    #         if self.gameEngine.msg.startswith('Searching '):
-    #             s = self.gameEngine.msg.split(' ')[1];
-    #             ls = s.split('/');
-    #             cnt = float(ls[0])/float(ls[1]) * 15;
-    #             msg += '.' * int(cnt);
-    #     self.controlFrame.aiStatus.info['text'] = msg;
+            if self.gameEngine.msg.startswith('Searching '):
+                s = self.gameEngine.msg.split(' ')[1];
+                ls = s.split('/');
+                cnt = float(ls[0])/float(ls[1]) * 15;
+                msg += '.' * int(cnt);
+        self.controlFrame.aiStatus.info['text'] = msg;
 
             
     def otherColor(self, color):
@@ -695,7 +695,7 @@ class App(Frame):
 
     def toGameState(self, state):
         self.gameState = state;
-        # self.updateStatus();
+        self.updateStatus();
 
     def onClickBoard(self, event):
         x = event.widget.x;
