@@ -1,0 +1,33 @@
+def updateStatus(self):#dep
+        # image = random.sample(self.faces.get(GameState.Idle), 1)[0];
+        # ls = self.faces.get(self.gameState);
+        # According to gameState.
+        # if ls != None and len(ls) > 0:
+        #     image = random.sample(ls, 1)[0];
+            
+        # self.controlFrame.aiStatus.image['image'] = image;
+        self.controlFrame.aiStatus.info['text'] = '';
+
+        msg = 'Press start to game.';
+        if self.gameState == GameState.Win:
+            if self.winner == self.gameEngine.color:
+                msg = 'I win!';
+            else:
+                msg = 'I lose!';
+        elif self.gameState == GameState.WaitForHumanFirst:
+            msg = 'Move the first...';
+        elif self.gameState == GameState.WaitForHumanSecond:
+            msg = 'Move the second...';
+        elif self.gameState == GameState.WaitForEngine:
+            msg = 'Thinking.';
+            # Check format: Searching 31/37
+
+            if self.gameEngine.msg.startswith('Searching '):
+                s = self.gameEngine.msg.split(' ')[1];
+                ls = s.split('/');
+                cnt = float(ls[0])/float(ls[1]) * 15;
+                msg += '.' * int(cnt);
+        self.controlFrame.aiStatus.info['text'] = msg;
+
+
+TypeError: 'method' object does not support item assignment
