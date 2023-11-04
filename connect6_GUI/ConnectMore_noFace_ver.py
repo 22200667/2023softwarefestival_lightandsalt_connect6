@@ -55,10 +55,6 @@ class Move:
         
         return None;
 
-    def toCmd(self):  
-        cmd = 'move ' + self.cmd() + '\n';
-        print('Cmd:', cmd);
-        return cmd;
 
     def toPlaceCmd(self):
         if self.color == Move.BLACK:
@@ -225,7 +221,7 @@ class GameState:
 
     Idle = 0;
     AI2AI = 1;
-    AI2Human = 2
+    AI2Human = 2;
     Human2Human = 3;
 
     WaitForEngine = 1;
@@ -321,10 +317,11 @@ class App(Frame):
         self.aiLevel = IntVar();
         #print(self.aiLevel.get());
         labelframe.lowRBtn = Radiobutton(labelframe, text="Low", variable=self.aiLevel, value=4);
-        labelframe.lowRBtn.select();
+        
         labelframe.lowRBtn.pack( anchor = W );
         labelframe.mediumRBtn = Radiobutton(labelframe, text="Medium", variable=self.aiLevel, value=5);
         labelframe.mediumRBtn.pack( anchor = W )
+        labelframe.mediumRBtn.select();
         labelframe.highRBtn = Radiobutton(labelframe, text="High", variable=self.aiLevel, value=6);
         labelframe.highRBtn.pack( anchor = W );
         self.vcf = IntVar();
@@ -375,7 +372,7 @@ class App(Frame):
         # labelframe.image = Label(labelframe, image=self.images['smile']);
         # labelframe.image.pack(side=TOP, anchor = W);
         labelframe.info = Label(labelframe, text='');
-        labelframe.info.pack(side=LEFT, anchor = W);
+        labelframe.info.pack(side=BOTTOM, anchor = W);
 
         #self.initGameEngine();
 
@@ -405,7 +402,7 @@ class App(Frame):
         self.controlFrame.selectBlack.engineRBtn['text'] = shortName;
         self.controlFrame.selectWhite.engineRBtn['text'] = shortName;
         name = self.gameEngine.name.capitalize();
-        self.controlFrame.aiStatus.name['text'] = name;
+        # self.controlFrame.aiStatus.name['text'] = name;
         #root.title('Cloudict.Connect6 - ' + name);
 
     def createBoardUnit(self, x, y, imageKey):
@@ -558,7 +555,7 @@ class App(Frame):
     def updateStatus(self):#dep
         # image = random.sample(self.faces.get(GameState.Idle), 1)[0];
         # ls = self.faces.get(self.gameState);
-        # According to gameState.
+        # # According to gameState.
         # if ls != None and len(ls) > 0:
         #     image = random.sample(ls, 1)[0];
             
