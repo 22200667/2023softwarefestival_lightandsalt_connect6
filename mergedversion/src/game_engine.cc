@@ -113,8 +113,24 @@ int CGameEngine::run()
         } else
         if (strcmp(msg,"next") == 0)
         {
-            next:
+            //next:
             m_chess_type = m_chess_type ^ 3;
+            int initialblackflag=0;
+            for(int i=0; i<19; i++){
+                for(int j=0; j<19; j++){
+                    if(m_board[i][j]==BLACK){
+                        initialblackflag=1;
+                        break;
+                    }
+                }
+                if(initialblackflag)
+                    break;
+            }
+            if(initialblackflag==0){
+                printf("move JJ\n");
+                fflush(stdout);
+                continue;
+            }
             if (search_a_move(m_chess_type, &m_best_move))
             {
                 make_move(m_board, &m_best_move, m_chess_type);
@@ -197,13 +213,13 @@ int CGameEngine::run()
                 if(msg[11]!=0){
                 a=msg2move(&msg[11], &m_best_move);
                 ban_field(m_board, &m_best_move, BORDER,a);
-                printf("check1");
+                // printf("check1");
                 }
-                printf("place set\n");
+                // printf("place set\n");
                 fflush(stdout);
                 }
-                goto next;
-                //continue;
+                // goto next;
+                continue;
         }else if(strncmp(msg,"placeW",6)==0){
                 init_game();
                 m_chess_type = WHITE;
@@ -214,7 +230,7 @@ int CGameEngine::run()
                 a=msg2move(&msg[11], &m_best_move);
                 ban_field(m_board, &m_best_move, BORDER,a);
                 }
-                printf("place set\n");
+                // printf("place set\n");
                 fflush(stdout);
                 }
                 continue;
