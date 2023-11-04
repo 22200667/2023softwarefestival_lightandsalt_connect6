@@ -317,10 +317,11 @@ class App(Frame):
         self.aiLevel = IntVar();
         #print(self.aiLevel.get());
         labelframe.lowRBtn = Radiobutton(labelframe, text="Low", variable=self.aiLevel, value=4);
-        labelframe.lowRBtn.select();
+        
         labelframe.lowRBtn.pack( anchor = W );
         labelframe.mediumRBtn = Radiobutton(labelframe, text="Medium", variable=self.aiLevel, value=5);
         labelframe.mediumRBtn.pack( anchor = W )
+        labelframe.mediumRBtn.select();
         labelframe.highRBtn = Radiobutton(labelframe, text="High", variable=self.aiLevel, value=6);
         labelframe.highRBtn.pack( anchor = W );
         self.vcf = IntVar();
