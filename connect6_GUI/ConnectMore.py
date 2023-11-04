@@ -275,30 +275,30 @@ class App(Frame):
         im['go_wt'] = PhotoImage(file='imgs/go_wt.gif');
         im['go_ban'] = PhotoImage(file='imgs/go_ban.gif');
 
-        im['angel'] = PhotoImage(file='imgs/Emotes-face-angel.gif');
-        im['laugh'] = PhotoImage(file='imgs/Emotes-face-laugh.gif');
-        im['plain'] = PhotoImage(file='imgs/Emotes-face-plain.gif');
-        im['raspberry'] = PhotoImage(file='imgs/Emotes-face-raspberry.gif');
-        im['sad'] = PhotoImage(file='imgs/Emotes-face-sad.gif');
-        im['smile'] = PhotoImage(file='imgs/Emotes-face-smile.gif');
-        im['smile-big'] = PhotoImage(file='imgs/Emotes-face-smile-big.gif');
-        im['surprise'] = PhotoImage(file='imgs/Emotes-face-surprise.gif');
-        im['uncertain'] = PhotoImage(file='imgs/Emotes-face-uncertain.gif');
-        im['wink'] = PhotoImage(file='imgs/Emotes-face-wink.gif');
+        # im['angel'] = PhotoImage(file='imgs/Emotes-face-angel.gif');
+        # im['laugh'] = PhotoImage(file='imgs/Emotes-face-laugh.gif');
+        # im['plain'] = PhotoImage(file='imgs/Emotes-face-plain.gif');
+        # im['raspberry'] = PhotoImage(file='imgs/Emotes-face-raspberry.gif');
+        # im['sad'] = PhotoImage(file='imgs/Emotes-face-sad.gif');
+        # im['smile'] = PhotoImage(file='imgs/Emotes-face-smile.gif');
+        # im['smile-big'] = PhotoImage(file='imgs/Emotes-face-smile-big.gif');
+        # im['surprise'] = PhotoImage(file='imgs/Emotes-face-surprise.gif');
+        # im['uncertain'] = PhotoImage(file='imgs/Emotes-face-uncertain.gif');
+        # im['wink'] = PhotoImage(file='imgs/Emotes-face-wink.gif');
 
-        self.faces = {};
-        waiting = [im['angel'], im['raspberry'], im['smile'], im['wink']];
-        self.faces[GameState.Idle] = waiting;
-        self.faces[GameState.WaitForHumanFirst] = waiting;
-        self.faces[GameState.WaitForHumanSecond] = waiting;
-        waitingSad = [im['plain'], im['sad'], im['surprise'], im['uncertain'] ];
-        self.faces['LowScore'] = waitingSad;
-        searching = [im['plain'], im['surprise'], im['uncertain'] ];
-        self.faces[GameState.WaitForEngine] = searching;
-        won = [im['angel'], im['laugh'], im['raspberry'], im['smile'], im['smile-big'], im['wink'] ];
-        self.faces['win'] = won;
-        lost = [im['plain'], im['sad'], im['surprise'], im['uncertain'], ];
-        self.faces['lose'] = lost;
+        # self.faces = {};
+        # waiting = [im['angel'], im['raspberry'], im['smile'], im['wink']];
+        # self.faces[GameState.Idle] = waiting;
+        # self.faces[GameState.WaitForHumanFirst] = waiting;
+        # self.faces[GameState.WaitForHumanSecond] = waiting;
+        # waitingSad = [im['plain'], im['sad'], im['surprise'], im['uncertain'] ];
+        # self.faces['LowScore'] = waitingSad;
+        # searching = [im['plain'], im['surprise'], im['uncertain'] ];
+        # self.faces[GameState.WaitForEngine] = searching;
+        # won = [im['angel'], im['laugh'], im['raspberry'], im['smile'], im['smile-big'], im['wink'] ];
+        # self.faces['win'] = won;
+        # lost = [im['plain'], im['sad'], im['surprise'], im['uncertain'], ];
+        # self.faces['lose'] = lost;
 
         # Game engines
         self.gameEngine = GameEngine();
@@ -309,70 +309,70 @@ class App(Frame):
         self.canvas = Canvas(self, width=640, height=640);
         self.canvas.pack(side=LEFT, fill=BOTH, expand=1);
         # Button widgets
-        self.controlFrame = LabelFrame(self);
+        self.controlFrame = LabelFrame(self, bg="#dcb35c");
         self.controlFrame.pack(fill=BOTH, expand=1);
         
-        self.controlFrame.aiLevel = labelframe = LabelFrame(self.controlFrame, text='AI Level');
+        self.controlFrame.aiLevel = labelframe = LabelFrame(self.controlFrame, bg="#dcb35c", text='AI Level');
         labelframe.pack(fill=X, expand=1);
         self.aiLevel = IntVar();
         #print(self.aiLevel.get());
-        labelframe.lowRBtn = Radiobutton(labelframe, text="Low", variable=self.aiLevel, value=4);
+        labelframe.lowRBtn = Radiobutton(labelframe, bg="#dcb35c", text="Low", variable=self.aiLevel, value=4);
         
         labelframe.lowRBtn.pack( anchor = W );
-        labelframe.mediumRBtn = Radiobutton(labelframe, text="Medium", variable=self.aiLevel, value=5);
+        labelframe.mediumRBtn = Radiobutton(labelframe, bg="#dcb35c", text="Medium", variable=self.aiLevel, value=5);
         labelframe.mediumRBtn.pack( anchor = W )
         labelframe.mediumRBtn.select();
-        labelframe.highRBtn = Radiobutton(labelframe, text="High", variable=self.aiLevel, value=6);
+        labelframe.highRBtn = Radiobutton(labelframe, bg="#dcb35c", text="High", variable=self.aiLevel, value=6);
         labelframe.highRBtn.pack( anchor = W );
         self.vcf = IntVar();
-        chbox = Checkbutton(labelframe, text = "With VCF", variable = self.vcf, );
+        chbox = Checkbutton(labelframe, bg="#dcb35c", text = "With VCF", variable = self.vcf, );
         chbox.select();
         chbox.pack(anchor = W );
         # print(self.vcf.get());
 
-        self.controlFrame.selectBlack = labelframe = LabelFrame(self.controlFrame, text='Black Player');
+        self.controlFrame.selectBlack = labelframe = LabelFrame(self.controlFrame,  bg="#dcb35c", text='Black Player');
         labelframe.pack(fill=X, expand=1);
         labelframe.blackImg = Label(labelframe, image=self.images['go_b']);
         labelframe.blackImg.pack(side=LEFT, anchor = W);
         self.blackSelected = StringVar();
-        labelframe.humanRBtn = Radiobutton(labelframe, text="Human", variable=self.blackSelected, value=' ');
+        labelframe.humanRBtn = Radiobutton(labelframe,  bg="#dcb35c", text="Human", variable=self.blackSelected, value=' ');
         labelframe.humanRBtn.select();
         labelframe.humanRBtn.pack( anchor = W );
-        labelframe.engineRBtn = Radiobutton(labelframe, text="AI", variable=self.blackSelected, value='engine');
+        labelframe.engineRBtn = Radiobutton(labelframe,  bg="#dcb35c", text="AI", variable=self.blackSelected, value='engine');
         labelframe.engineRBtn.pack( anchor = W );
         #print(self.blackSelected.get());
         
-        self.controlFrame.selectWhite = labelframe = LabelFrame(self.controlFrame, text='White Player');
+        self.controlFrame.selectWhite = labelframe = LabelFrame(self.controlFrame, bg="#dcb35c", text='White Player');
         labelframe.pack(fill=X, expand=1);
         labelframe.whiteImg = Label(labelframe, image=self.images['go_w']);
         labelframe.whiteImg.pack(side=LEFT, anchor = W);
         self.whiteSelected = StringVar();
-        labelframe.humanRBtn = Radiobutton(labelframe, text="Human", variable=self.whiteSelected, value=' ');
+        labelframe.humanRBtn = Radiobutton(labelframe,  bg="#dcb35c", text="Human", variable=self.whiteSelected, value=' ');
         labelframe.humanRBtn.select();
         labelframe.humanRBtn.pack( anchor = W );
-        labelframe.engineRBtn = Radiobutton(labelframe, text="AI", variable=self.whiteSelected, value='engine');
+        labelframe.engineRBtn = Radiobutton(labelframe, bg="#dcb35c", text="AI", variable=self.whiteSelected, value='engine');
         labelframe.engineRBtn.pack( anchor = W );
         
-        self.controlFrame.gameContral = labelframe = LabelFrame(self.controlFrame, text='Game Contral');
+        self.controlFrame.gameContral = labelframe = LabelFrame(self.controlFrame,  bg="#dcb35c", text='Game Contral');
         labelframe.pack(fill=X, expand=1);
-        labelframe.newBtn = Button(labelframe, text='Set Red Stone', command=self.setBan);
+        labelframe.newBtn = Button(labelframe,  bg="#dcb35c", text='Set Red Stone', command=self.setBan);
         labelframe.newBtn.pack(side=TOP, fill=X);
-        labelframe.backBtn = Button(labelframe, text='Back Move', command=self.backMove);
+        labelframe.backBtn = Button(labelframe, bg="#dcb35c", text='Back Move', command=self.backMove);
         labelframe.backBtn.pack(fill=X);
         #labelframe.loadBtn = Button(labelframe, text='Load Engine', command=self.loadGameEngine); #depr
-        labelframe.loadBtn = Button(labelframe, text='Start the Game', command=self.newGame);
+        labelframe.loadBtn = Button(labelframe, bg="#dcb35c", text='Start the Game', command=self.newGame);
         labelframe.loadBtn.pack(fill=BOTH);
-        labelframe.quitBtn = Button(labelframe, text='Quit Game', command=self.master.destroy);
+        labelframe.quitBtn = Button(labelframe, bg="#dcb35c", text='Quit Game', command=self.master.destroy);
         labelframe.quitBtn.pack(fill=X);
 
-        self.controlFrame.aiStatus = labelframe = LabelFrame(self.controlFrame, text='AI Status');
+        self.controlFrame.aiStatus = labelframe = LabelFrame(self.controlFrame,  bg="#dcb35c", text='AI Status');
         labelframe.pack(side=BOTTOM, fill=BOTH, expand="yes");
-        labelframe.name = Label(labelframe, text='AI Name');
-        labelframe.name.pack(side=TOP, anchor = W);
-        labelframe.image = Label(labelframe, image=self.images['smile']);
-        labelframe.image.pack(side=TOP, anchor = W);
-        labelframe.info = Label(labelframe, text='');
-        labelframe.info.pack(side=BOTTOM, anchor = W);
+        # labelframe.name = Label(labelframe, text='AI Name');
+        # labelframe.name.pack(side=TOP, anchor = W);
+        # labelframe.image = Label(labelframe, image=self.images['smile']);
+        # labelframe.image.pack(side=TOP, anchor = W);
+        labelframe.info = Label(labelframe, bg="#dcb35c", text='');
+        labelframe.info.pack(side=TOP, anchor = "center");
 
         #self.initGameEngine();
 
@@ -402,7 +402,7 @@ class App(Frame):
         self.controlFrame.selectBlack.engineRBtn['text'] = shortName;
         self.controlFrame.selectWhite.engineRBtn['text'] = shortName;
         name = self.gameEngine.name.capitalize();
-        self.controlFrame.aiStatus.name['text'] = name;
+        # self.controlFrame.aiStatus.name['text'] = name;
         #root.title('Cloudict.Connect6 - ' + name);
 
     def createBoardUnit(self, x, y, imageKey):
@@ -553,13 +553,13 @@ class App(Frame):
                 sleep(0.5);
 
     def updateStatus(self):#dep
-        image = random.sample(self.faces.get(GameState.Idle), 1)[0];
-        ls = self.faces.get(self.gameState);
-        # According to gameState.
-        if ls != None and len(ls) > 0:
-            image = random.sample(ls, 1)[0];
+        # image = random.sample(self.faces.get(GameState.Idle), 1)[0];
+        # ls = self.faces.get(self.gameState);
+        # # According to gameState.
+        # if ls != None and len(ls) > 0:
+        #     image = random.sample(ls, 1)[0];
             
-        self.controlFrame.aiStatus.image['image'] = image;
+        # self.controlFrame.aiStatus.image['image'] = image;
         self.controlFrame.aiStatus.info['text'] = '';
 
         msg = 'Press start to game.';
@@ -665,9 +665,9 @@ class App(Frame):
             self.winner = color;
             self.toGameState(GameState.Win);
             if color == Move.BLACK:
-                messagebox.showinfo("Black Win", "Black Win;) Impressive!")
+                messagebox.showinfo("Black Win", "Black Win;)")
             else:
-                messagebox.showinfo("White Win", "White Win;) Impressive!")
+                messagebox.showinfo("White Win", "White Win;)")
 
     def placeColor(self, color, x, y, extra = ''):
         if color == Move.BLACK:
@@ -773,6 +773,11 @@ def main():
     app.master.title('Cloudict.Connect6')
     # app.master.maxsize(840, 840)
 
+
+    # set background color -> #dcb35c
+    app.configure(bg="#dcb35c")
+    
+    
     # start the program
     app.mainloop()
 
