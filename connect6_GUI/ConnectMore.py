@@ -2,15 +2,6 @@
 # Copyright (c) 2014, Liang Li <ll@lianglee.org; liliang010@gmail.com>,
 # All rights reserved.
 #
-# This program is a free software; you can redistribute it and/or modify
-# it under the terms of the BSD license. See LICENSE.txt for details.
-#
-# It's a UI for Coudict(https://github.com/lang010/cloudict) based on Python 3.
-# Other connect6 programs with similar commands are also supported.
-# Enjoy Connect6;)
-#
-# Last Modified: 2014/09/14
-#
 
 from tkinter import *;
 from tkinter import filedialog;
